@@ -1,7 +1,16 @@
 import "./App.css";
+import NavBar from "./components/NavBar";
+import Header from "./components/Header";
+import Profile from "./components/Profile";
 
-function App() {
-  return <div className="App"></div>;
-}
+const App = () => {
+  return (
+    <div className="app-wrapper">
+      <Header />
+      <NavBar />
+      <Profile />
+    </div>
+  );
+};
 
 export default App;
