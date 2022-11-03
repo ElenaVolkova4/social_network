@@ -1,8 +1,9 @@
-import "./Profile.css";
+import MyPosts from "./MyPosts/MyPosts";
+import styles from "./Profile.module.css";
 
 const Profile = () => {
   return (
-    <div className="content">
+    <div>
       <div>
         {/* <img src="../images/papillon.png" alt="" /> */}
         <img
@@ -11,12 +12,7 @@ const Profile = () => {
         />
       </div>
       <div>ava + descr</div>
-      <div>
-        My posts
-        <div>new post</div>
-        <div>post 1</div>
-        <div>post 2</div>
-      </div>
+      <MyPosts />{" "}
     </div>
   );
 };

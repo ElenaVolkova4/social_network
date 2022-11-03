@@ -1,14 +1,18 @@
 import "./App.css";
-import NavBar from "./components/NavBar";
-import Header from "./components/Header";
-import Profile from "./components/Profile";
+import NavBar from "./components/NavBar/NavBar";
+import Header from "./components/Header/Header";
+import Profile from "./components/Profile/Profile";
+import Dialogs from "./components/Dialogs/Dialogs";
 
 const App = () => {
   return (
     <div className="app-wrapper">
       <Header />
       <NavBar />
-      <Profile />
+      <div className="app-wrapper-content">
+        <Dialogs />
+        {/* <Profile /> */}
+      </div>
     </div>
   );
 };
