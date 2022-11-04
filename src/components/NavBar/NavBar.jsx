@@ -1,24 +1,36 @@
+import { NavLink } from "react-router-dom";
 import styles from "./NavBar.module.css";
+
+//для выделения активных ссылок другим цветом
+const setActiveLink = ({ isActive }) => (isActive ? styles.activeLink : "");
 
 const NavBar = () => {
   return (
     <div className={styles.nav}>
       <div className={styles.item}>
-        <a className="item" href="/profile">
+        <NavLink to="/profile" className={setActiveLink}>
           Profile
-        </a>
+        </NavLink>
       </div>
       <div className={styles.item}>
-        <a href="/dialogs">Messages</a>
+        <NavLink to="/dialogs" className={setActiveLink}>
+          Messages
+        </NavLink>
       </div>
       <div className={styles.item}>
-        <a href="/news">News</a>
+        <NavLink to="/news" className={setActiveLink}>
+          News
+        </NavLink>
       </div>
       <div className={styles.item}>
-        <a href="/music">Music</a>
+        <NavLink to="/music" className={setActiveLink}>
+          Music
+        </NavLink>
       </div>
       <div className={styles.item}>
-        <a href="/settings">Settings</a>
+        <NavLink to="/settings" className={setActiveLink}>
+          Settings
+        </NavLink>
       </div>
     </div>
   );

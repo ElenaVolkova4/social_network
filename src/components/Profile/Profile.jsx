@@ -5,8 +5,8 @@ const Profile = () => {
   return (
     <div>
       <div>
-        {/* <img src="../images/papillon.png" alt="" /> */}
         <img
+          className={styles.img}
           src="https://www.dogbible.com/app/images/papillon-breed-description-297933.png"
           alt=""
         />
