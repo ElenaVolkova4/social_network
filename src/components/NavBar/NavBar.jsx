@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
+import Friends from "./Friends/Friends";
 import styles from "./NavBar.module.css";
 
 //для выделения активных ссылок другим цветом
 const setActiveLink = ({ isActive }) => (isActive ? styles.activeLink : "");
 
-const NavBar = () => {
+const NavBar = (props) => {
   return (
     <div className={styles.nav}>
       <div className={styles.item}>
@@ -32,6 +33,7 @@ const NavBar = () => {
           Settings
         </NavLink>
       </div>
+      <Friends />
     </div>
   );
 };
