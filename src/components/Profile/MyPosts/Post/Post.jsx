@@ -1,7 +1,6 @@
 import styles from "./Post.module.css";
 
 const Post = (props) => {
-  // debugger;
   return (
     <div className="post">
       <div className={`${styles.post} ${styles.active}`}>
