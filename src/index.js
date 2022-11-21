@@ -1,12 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import state, { subscribe } from "../src/redux/state";
+import store from "../src/redux/state";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import { addMessage, addPost, updateNewMessage } from "./redux/state";
-import { updateNewPost } from "./redux/state";
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 let rerenderEntireTree = (state) => {
@@ -15,15 +12,15 @@ let rerenderEntireTree = (state) => {
       <BrowserRouter>
         <App
           state={state}
-          addPost={addPost}
-          updateNewPost={updateNewPost}
-          addMessage={addMessage}
-          updateNewMessage={updateNewMessage}
+          addPost={store.addPost.bind(store)} //вызываем метод addPost не сейчас, а передае как коллбек. не от имени store, а кого-то другого (Myposts)
+          updateNewPost={store.updateNewPost.bind(store)}
+          addMessage={store.addMessage.bind(store)}
+          updateNewMessage={store.updateNewMessage.bind(store)}
         />
       </BrowserRouter>
     </React.StrictMode>
   );
 };
 
-rerenderEntireTree(state);
-subscribe(rerenderEntireTree);
+rerenderEntireTree(store.getState());
+store.subscribe(rerenderEntireTree);
