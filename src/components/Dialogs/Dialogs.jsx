@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import {
-  addMessageActionCreator,
+  sendMessageActionCreator,
   updateNewMessageActionCreator,
 } from "../../redux/state";
 import DialogItem from "./DialogItem/DialogItem";
@@ -17,16 +17,16 @@ const Dialogs = (props) => {
     <Message message={m.message} key={m.id} />
   ));
 
-  let newMessageElement = React.createRef();
+  // let newMessageElement = React.createRef();
 
-  const addMessage = () => {
-    props.dispatch(addMessageActionCreator());
+  const sendMessage = () => {
+    props.dispatch(sendMessageActionCreator());
 
     // props.addMessage();
   };
 
-  const onMessageChange = () => {
-    let text = newMessageElement.current.value;
+  const onSendMessageChange = (event) => {
+    let text = event.target.value;
     props.dispatch(updateNewMessageActionCreator(text));
 
     // props.updateNewMessage(text);
@@ -38,12 +38,14 @@ const Dialogs = (props) => {
         <div className={styles.dialogsItems}>{dialogsElements}</div>
         <div className={styles.messages}>{messagesElements}</div>
       </div>
+
       <textarea
-        ref={newMessageElement}
-        onChange={onMessageChange}
+        // ref={newMessageElement}
+        onChange={onSendMessageChange}
         value={props.state.newMessageText}
+        placeholder="Enter your messsage"
       ></textarea>
-      <button onClick={addMessage}>Send</button>
+      <button onClick={sendMessage}>Send</button>
     </div>
   );
 };
