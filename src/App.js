@@ -10,7 +10,7 @@ import Settings from "./components/Settings/Settings";
 import { addMessage } from "./redux/state";
 
 const App = (props) => {
-  console.log(props);
+  // console.log(props);
   return (
     <div className="app-wrapper">
       <Header />

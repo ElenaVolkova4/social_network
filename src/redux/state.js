@@ -91,39 +91,52 @@ let store = {
       this._callSubscriber(this._state);
     }
   },
-
-  // все эти методы заменены dispatch
-  // addPost() {
-  //   // debugger;
-  //   let newPost = {
-  //     id: 7,
-  //     message: this._state.profilePage.newPostText,
-  //     likeCount: 0,
-  //   };
-  //   this._state.profilePage.postsData.push(newPost);
-  //   this._state.profilePage.newPostText = "";
-  //   this._callSubscriber(this._state);
-  // },
-
-  // updateNewPost(newText) {
-  //   this._state.profilePage.newPostText = newText;
-  //   this._callSubscriber(this._state);
-  // },
-
-  // addMessage() {
-  //   let newMessage = {
-  //     message: this._state.dialogsPage.newMessageText,
-  //     id: 4,
-  //   };
-  //   this._state.dialogsPage.messagesData.push(newMessage);
-  //   this._state.dialogsPage.newMessageText = "";
-  //   this._callSubscriber(this._state);
-  // },
-
-  // updateNewMessage(newText) {
-  //   this._state.dialogsPage.newMessageText = newText;
-  //   this._callSubscriber(this._state);
-  // },
 };
+
+export const addPostCreator = () => {
+  return {
+    type: "ADD-POST",
+  };
+};
+
+export const updateNewPostCreator = (text) => {
+  return {
+    type: "UPDATE-NEW-POST",
+    newText: text,
+  };
+};
+
+// все эти методы заменены dispatch
+// addPost() {
+//   // debugger;
+//   let newPost = {
+//     id: 7,
+//     message: this._state.profilePage.newPostText,
+//     likeCount: 0,
+//   };
+//   this._state.profilePage.postsData.push(newPost);
+//   this._state.profilePage.newPostText = "";
+//   this._callSubscriber(this._state);
+// },
+
+// updateNewPost(newText) {
+//   this._state.profilePage.newPostText = newText;
+//   this._callSubscriber(this._state);
+// },
+
+// addMessage() {
+//   let newMessage = {
+//     message: this._state.dialogsPage.newMessageText,
+//     id: 4,
+//   };
+//   this._state.dialogsPage.messagesData.push(newMessage);
+//   this._state.dialogsPage.newMessageText = "";
+//   this._callSubscriber(this._state);
+// },
+
+// updateNewMessage(newText) {
+//   this._state.dialogsPage.newMessageText = newText;
+//   this._callSubscriber(this._state);
+// },
 
 export default store;
