@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import store from "../src/redux/state";
+// import store from "./redux/store";//собственный стор
+import store from "./redux/redux-store"; //стор редакса
+
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -24,4 +26,9 @@ let rerenderEntireTree = (state) => {
 };
 
 rerenderEntireTree(store.getState());
-store.subscribe(rerenderEntireTree);
+
+store.subscribe(() => {
+  let state = store.getState();
+
+  rerenderEntireTree(state);
+});
