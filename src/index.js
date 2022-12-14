@@ -9,12 +9,14 @@ import { BrowserRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 let rerenderEntireTree = (state) => {
+  // console.log(state);
   root.render(
     <React.StrictMode>
       <BrowserRouter>
         <App
           state={state}
           dispatch={store.dispatch.bind(store)}
+          store={store} //НАДО ЛИ???????????? САМА НАПИСАЛА
           // addPost={store.addPost.bind(store)} //вызываем метод addPost не сейчас, а передае как коллбек. не от имени store, а кого-то другого (Myposts)
           // updateNewPost={store.updateNewPost.bind(store)}
           // addMessage={store.addMessage.bind(store)}
@@ -28,7 +30,7 @@ let rerenderEntireTree = (state) => {
 rerenderEntireTree(store.getState());
 
 store.subscribe(() => {
-  let state = store.getState();
+  let state = store.getState(); //передаем новый измененный стор
 
   rerenderEntireTree(state);
 });

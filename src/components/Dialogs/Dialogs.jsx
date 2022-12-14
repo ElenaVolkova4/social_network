@@ -9,25 +9,30 @@ import styles from "./Dialogs.module.css";
 import Message from "./Message/Message";
 
 const Dialogs = (props) => {
-  let dialogsElements = props.state.dialogsData.map((d) => (
+  let state = props.dialogsPage;
+  // console.log(props);
+
+  let dialogsElements = state.dialogsData.map((d) => (
     <DialogItem name={d.name} id={d.id} key={d.id} />
   ));
 
-  let messagesElements = props.state.messagesData.map((m) => (
+  let messagesElements = state.messagesData.map((m) => (
     <Message message={m.message} key={m.id} />
   ));
 
   // let newMessageElement = React.createRef();
 
-  const sendMessage = () => {
-    props.dispatch(sendMessageActionCreator());
+  const onSendMessage = () => {
+    props.sendMessage();
+    // props.store.dispatch(sendMessageActionCreator());
 
     // props.addMessage();
   };
 
   const onSendMessageChange = (event) => {
     let text = event.target.value;
-    props.dispatch(updateNewMessageActionCreator(text));
+    props.updateNewMessage(text);
+    // props.store.dispatch(updateNewMessageActionCreator(text));
 
     // props.updateNewMessage(text);
   };
@@ -42,10 +47,10 @@ const Dialogs = (props) => {
       <textarea
         // ref={newMessageElement}
         onChange={onSendMessageChange}
-        value={props.state.newMessageText}
+        value={state.newMessageText}
         placeholder="Enter your messsage"
       ></textarea>
-      <button onClick={sendMessage}>Send</button>
+      <button onClick={onSendMessage}>Send</button>
     </div>
   );
 };

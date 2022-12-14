@@ -8,9 +8,12 @@ import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import { addMessage } from "./redux/store";
+import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
 const App = (props) => {
-  // console.log(props);
+  // console.log(props.store);
+  // debugger;
+
   return (
     <div className="app-wrapper">
       <Header />
@@ -21,8 +24,9 @@ const App = (props) => {
             path="/profile"
             element={
               <Profile
-                state={props.state.profilePage}
-                dispatch={props.dispatch}
+                store={props.store}
+                // state={props.state.profilePage}
+                // dispatch={props.dispatch}
                 // addPost={props.addPost}
                 // updateNewPost={props.updateNewPost}
               />
@@ -31,13 +35,16 @@ const App = (props) => {
           <Route
             path="/dialogs/*"
             element={
-              <Dialogs
-                state={props.state.dialogsPage}
-                dispatch={props.dispatch}
+              // <Dialogs
+              //   store={props.store}
+              //   state={props.state.dialogsPage}
+              //   dispatch={props.dispatch}
 
-                // addMessage={props.addMessage}
-                // updateNewMessage={props.updateNewMessage}
-              />
+              //   // addMessage={props.addMessage}
+              //   // updateNewMessage={props.updateNewMessage}
+              ///>
+
+              <DialogsContainer store={props.store} />
             }
           />
           <Route path="/news" element={<News />} />
