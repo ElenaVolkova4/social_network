@@ -6,6 +6,7 @@ import store from "./redux/redux-store"; //стор редакса
 
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
+import StoreContext from "./StoreContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 let rerenderEntireTree = (state) => {
@@ -13,15 +14,13 @@ let rerenderEntireTree = (state) => {
   root.render(
     <React.StrictMode>
       <BrowserRouter>
-        <App
-          state={state}
-          dispatch={store.dispatch.bind(store)}
-          store={store} //НАДО ЛИ???????????? САМА НАПИСАЛА
-          // addPost={store.addPost.bind(store)} //вызываем метод addPost не сейчас, а передае как коллбек. не от имени store, а кого-то другого (Myposts)
-          // updateNewPost={store.updateNewPost.bind(store)}
-          // addMessage={store.addMessage.bind(store)}
-          // updateNewMessage={store.updateNewMessage.bind(store)}
-        />
+        <StoreContext.Provider value={store}>
+          <App
+            state={state}
+            dispatch={store.dispatch.bind(store)}
+            store={store}
+          />
+        </StoreContext.Provider>
       </BrowserRouter>
     </React.StrictMode>
   );
