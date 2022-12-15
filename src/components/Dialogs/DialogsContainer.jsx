@@ -1,35 +1,32 @@
 import React from "react";
+import { connect } from "react-redux";
 import {
   sendMessageActionCreator,
   updateNewMessageActionCreator,
 } from "../../redux/dialogs-reducer.js";
-import StoreContext from "../../StoreContext.js";
 import Dialogs from "./Dialogs.jsx";
 
-const DialogsContainer = () => {
-  return (
-    <StoreContext.Consumer>
-      {(store) => {
-        let state = store.getState().dialogsPage;
+//создаем контейнерную компоненту с помощью библиотеки react-redux
 
-        const onSendMessageClick = () => {
-          store.dispatch(sendMessageActionCreator());
-        };
-
-        const onSendMessageChange = (text) => {
-          store.dispatch(updateNewMessageActionCreator(text));
-        };
-
-        return (
-          <Dialogs
-            updateNewMessage={onSendMessageChange}
-            sendMessage={onSendMessageClick}
-            dialogsPage={state}
-          />
-        );
-      }}
-    </StoreContext.Consumer>
-  );
+//сама функция connect подставит нужный state
+const mapStateToProps = (state) => {
+  return {
+    dialogsPage: state.dialogsPage,
+  };
 };
+
+//коллбеки, которые передаем компоненте Dialogs как атрибуты (вместо пропсов)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    sendMessage: () => {
+      dispatch(sendMessageActionCreator());
+    },
+    updateNewMessage: (text) => {
+      dispatch(updateNewMessageActionCreator(text));
+    },
+  };
+};
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;
