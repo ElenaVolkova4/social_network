@@ -9,10 +9,10 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import { addMessage } from "./redux/store";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 const App = (props) => {
   // console.log(props.store);
-  // debugger;
 
   return (
     <div className="app-wrapper">
@@ -28,6 +28,8 @@ const App = (props) => {
           <Route path="/news" element={<News />} />
           <Route path="/music" element={<Music />} />
           <Route path="/settings" element={<Settings />} />
+
+          <Route path="/users" element={<UsersContainer />} />
 
           {/* страница ошибки - без path */}
           {/* <Route component={ErrorPage}></Route> */}
