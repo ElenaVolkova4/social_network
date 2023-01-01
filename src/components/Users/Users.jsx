@@ -1,60 +1,16 @@
+import axios from "axios";
 import React from "react";
-
+import userImg from "../../images/user_img.png";
 import styles from "./Users.module.css";
 
 const Users = (props) => {
   if (props.users.length === 0) {
-    props.setUsers([
-      {
-        id: 1,
-        followed: true,
-        photoUrl:
-          "https://www.vokrug.tv/pic/person/a/f/c/e/afced21c66cbd6e9a648467249da905f.jpeg",
-        fullName: "Dmitry K.",
-        status: "Hi",
-        location: {
-          city: "Minsk",
-          country: "Belarus",
-        },
-      },
-      {
-        id: 2,
-        followed: true,
-        photoUrl:
-          "https://www.vokrug.tv/pic/person/a/f/c/e/afced21c66cbd6e9a648467249da905f.jpeg",
-        fullName: "Helena V.",
-        status: "Looking for..",
-        location: {
-          city: "Moscow",
-          country: "Russia",
-        },
-      },
-      {
-        id: 3,
-        followed: false,
-        photoUrl:
-          "https://www.vokrug.tv/pic/person/a/f/c/e/afced21c66cbd6e9a648467249da905f.jpeg",
-        fullName: "Lera L.",
-        status: "Not here",
-        location: {
-          city: "Minsk",
-          country: "Belarus",
-        },
-      },
-      {
-        id: 4,
-        followed: true,
-        photoUrl:
-          "https://www.vokrug.tv/pic/person/a/f/c/e/afced21c66cbd6e9a648467249da905f.jpeg",
-
-        fullName: "Dmitry K",
-        status: "available",
-        location: {
-          city: "London",
-          country: "England",
-        },
-      },
-    ]);
+    axios
+      .get("https://social-network.samuraijs.com/api/1.0/users")
+      .then((response) => {
+        // debugger;
+        props.setUsers(response.data.items);
+      });
   }
   return (
     <div>
@@ -62,7 +18,10 @@ const Users = (props) => {
         <div key={user.id}>
           <span>
             <div>
-              <img src={user.photoUrl} className={styles.userPhoto} />
+              <img
+                src={user.photos.small != null ? user.photos.small : userImg}
+                className={styles.userPhoto}
+              />
             </div>
             <div>
               {user.followed ? (
@@ -85,13 +44,13 @@ const Users = (props) => {
             </div>
           </span>
           <span>
-            <div>{user.fullName}</div>
+            <div>{user.name}</div>
             <div>{user.status}</div>
           </span>
           <span>
             {" "}
-            <div>{user.location.city}</div>
-            <div>{user.location.country}</div>
+            <div>{"user.location.city"}</div>
+            <div>{"user.location.country"}</div>
           </span>
         </div>
       ))}
