@@ -35,17 +35,29 @@ class Users extends React.Component {
       pages.push(i);
     }
 
+    //доработка из комментариев
+    let slicedPages;
+    let curPage = this.props.currentPage;
+    if (curPage - 3 < 0) {
+      slicedPages = pages.slice(0, 5);
+    } else {
+      slicedPages = pages.slice(curPage - 3, curPage + 2);
+    }
+
     return (
       <div>
         <div>
-          {pages.map((page) => {
+          {slicedPages.map((page) => {
+            {
+              /* {pages.map((page) => { */
+            }
             return (
               <span
                 // key={page}
                 className={
                   styles.page +
                   " " +
-                  (this.props.currentPage === page && styles.selectedPage)
+                  (this.props.currentPage === page ? styles.selectedPage : "")
                 }
                 onClick={(e) => {
                   this.onPageChanged(page);
