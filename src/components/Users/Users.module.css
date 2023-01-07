@@ -2,3 +2,13 @@
   width: 200px;
   height: 200px;
 }
+
+.page {
+  cursor: pointer;
+  color: blueviolet;
+}
+
+.selectedPage {
+  font-weight: bold;
+  font-size: larger;
+}
