@@ -64,32 +64,33 @@ const usersReducer = (state = initialState, action) => {
   }
 };
 
-export const followActionCreator = (userID) => ({
+//ActionCreatorы
+export const follow = (userID) => ({
   type: FOLLOW,
   userID,
 });
 
-export const unfollowActionCreator = (userID) => ({
+export const unfollow = (userID) => ({
   type: UNFOLLOW,
   userID,
 });
 
 //с сервера придут users
-export const setUsersActionCreator = (users) => ({
+export const setUsers = (users) => ({
   type: SET_USERS,
   users,
 });
 
-export const setCurrentPageActionCreator = (currentPage) => ({
+export const setCurrentPage = (currentPage) => ({
   type: SET_CURRENT_PAGE,
   currentPage,
 });
 
-export const setTotalUsersCountActionCreator = (totalUsersCount) => ({
+export const setTotalUsersCount = (totalUsersCount) => ({
   type: SET_TOTAL_USERS_COUNT,
   count: totalUsersCount,
 });
-export const toggleIsFetchingtActionCreator = (isFetching) => ({
+export const toggleIsFetching = (isFetching) => ({
   type: TOGGLE_IS_FETCHING,
   isFetching,
 });
