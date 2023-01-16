@@ -4,6 +4,7 @@
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
   border-radius: 15px;
   padding: 20px;
+  background: rgb(245, 247, 249);
 }
 
 .item {

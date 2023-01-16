@@ -1,8 +1,11 @@
+import Preloader from "../../common/Preloader/Preloader";
 import styles from "./ProfileInfo.module.css";
 
-// import {l} from "../../../images/banner"
-
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+  console.log(props);
+  if (!props.profile) {
+    return <Preloader />;
+  }
   return (
     <div>
       <div>
@@ -14,7 +17,15 @@ const ProfileInfo = () => {
           alt=""
         />
       </div>
-      <div className={styles.description}>ava + descr</div>
+      <div className={styles.description}>
+        <div>
+          <img src={props.profile.photos.small} />
+        </div>
+        <div>
+          <div>{props.profile.fullName}</div>
+        </div>
+        ava + descr
+      </div>
     </div>
   );
 };
