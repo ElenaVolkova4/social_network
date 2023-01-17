@@ -1,5 +1,6 @@
 // import { combineReducers, createStore } from "redux";//старое
 import { combineReducers, legacy_createStore as createStore } from "redux"; //новое
+import authReducer from "./auth-reducer";
 
 import dialogsReducer from "./dialogs-reducer";
 import profileReducer from "./profile-reducer";
@@ -11,6 +12,7 @@ let reducers = combineReducers({
   dialogsPage: dialogsReducer,
   sideBar: sidebarReducer,
   usersPage: usersReducer,
+  auth: authReducer,
 });
 
 let store = createStore(reducers);

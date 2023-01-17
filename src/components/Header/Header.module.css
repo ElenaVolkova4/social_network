@@ -5,3 +5,12 @@
 .header img {
   width: 80px;
 }
+
+.login {
+  float: right;
+  color: aquamarine;
+}
+
+.login a {
+  color: aquamarine;
+}
