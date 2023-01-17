@@ -1,8 +1,10 @@
 import styles from "./Users.module.css";
 import userImg from "../../images/user_img.png";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 
 const Users = (props) => {
+  console.log(props.users);
   let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
   let pages = [];
   for (let i = 1; i <= pagesCount; i++) {
@@ -57,7 +59,22 @@ const Users = (props) => {
               {user.followed ? (
                 <button
                   onClick={() => {
-                    props.unfollow(user.id);
+                    axios
+                      .delete(
+                        `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
+
+                        {
+                          withCredentials: true,
+                          headers: {
+                            "API-KEY": "1b45f043-c0cb-4548-939f-fb1cfa7b8b54",
+                          },
+                        }
+                      )
+                      .then((response) => {
+                        if (response.data.resultCode == 0) {
+                          props.unfollow(user.id);
+                        }
+                      });
                   }}
                 >
                   Unfollow
@@ -65,7 +82,23 @@ const Users = (props) => {
               ) : (
                 <button
                   onClick={() => {
-                    props.follow(user.id);
+                    axios
+                      .post(
+                        `https://social-network.samuraijs.com/api/1.0/follow/${user.id}`,
+                        {},
+                        {
+                          withCredentials: true,
+                          // headers: {
+                          //   "API-KEY": "1b45f043-c0cb-4548-939f-fb1cfa7b8b54",
+                          // },
+                        }
+                      )
+
+                      .then((response) => {
+                        if (response.data.resultCode == 0) {
+                          props.follow(user.id);
+                        }
+                      });
                   }}
                 >
                   Follow
